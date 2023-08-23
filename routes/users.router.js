@@ -3,16 +3,19 @@ import userController from '../controllers/user.controller.js';
 
 const router = express.Router();
 
-/* GET users listing. */
-router.get('/get', userController.getUsers);
+/* GET user listing. */
+router.get('/get', userController.getUser);
 
-/* POST users listing. */
-router.post('/create', userController.createUsers);
+/* GETBYID user listing. */
+router.get('/get/:id', userController.getUserById);
 
-/* PUT users listing. */
-router.put('/ipdate/:id', userController.updateUsers);
+/* POST user listing. */
+router.post('/create', userController.createUser);
 
-/* DELETE users listing. */
-router.delete('/delete/:id', userController.createUsers);
+/* PUT user listing. */
+router.put('/ipdate/:id', userController.updateUser);
+
+/* DELETE user listing. */
+router.delete('/delete/:id', userController.createUser);
 
 export default router;
