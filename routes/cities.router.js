@@ -7,15 +7,15 @@ const router = express.Router();
 router.get('/get', citiesController.getCities);
 
 /* GETBYID cities listing. */
-router.get('/get:id', citiesController.getCitiesById);
+router.get('/:id', citiesController.getCitiesById);
 
 /* POST cities listing. */
 router.post('/create', citiesController.createCities);
 
 /* PUT cities listing. */
-router.put('/ipdate/:id', citiesController.updateCities);
+router.put('/:id', citiesController.updateCities);
 
 /* DELETE cities listing. */
-router.delete('/delete/:id', citiesController.deleteCities);
+router.delete('/:id', citiesController.deleteCities);
 
 export default router;

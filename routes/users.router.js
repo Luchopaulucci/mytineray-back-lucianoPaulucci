@@ -7,15 +7,15 @@ const router = express.Router();
 router.get('/get', userController.getUser);
 
 /* GETBYID user listing. */
-router.get('/get/:id', userController.getUserById);
+router.get('/:id', userController.getUserById);
 
 /* POST user listing. */
 router.post('/create', userController.createUser);
 
 /* PUT user listing. */
-router.put('/ipdate/:id', userController.updateUser);
+router.put('/:id', userController.updateUser);
 
 /* DELETE user listing. */
-router.delete('/delete/:id', userController.createUser);
+router.delete('/:id', userController.createUser);
 
 export default router;
