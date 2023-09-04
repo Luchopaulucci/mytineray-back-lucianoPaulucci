@@ -10,6 +10,7 @@ let schema = new Schema({
     divisa: { type: String, required: true },
     language: { type: String, required: true },
     created_By: {type: Types.ObjectId,ref:'users'},
+    itineraries: [{ type: Types.ObjectId, ref: 'itineraries' }]
 }, {
     timestamps: true
 })
