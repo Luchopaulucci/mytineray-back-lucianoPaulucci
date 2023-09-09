@@ -72,7 +72,7 @@ const controller = {
     } catch (error) {
       console.log(error);
       return res.status(500).json({
-        succes: falses,
+        succes: false,
         message: "User creation failed",
       });
     }

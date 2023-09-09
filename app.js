@@ -25,20 +25,19 @@ app.use(cors());
 
 app.use('/api', indexRouter);
 
-// catch 404 and forward to error handler
-app.use(function(req, res, next) {
-  next(createError(404));
-});
+const notFound = (req, res, next) => {
+  next(createError(404, 'route dont exist'))
+}
 
-// error handler
-app.use(function(err, req, res, next) {
-  // set locals, only providing error in development
-  res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
+const errorHandler = (err, req, res, next) => {
+  console.log(err);
+  res.status(err.status || 500).json({
+    status: err.status,
+    message: err.message
+  })
+}
 
-  // render the error page
-  res.status(err.status || 500);
-  res.render('error');
-});
+app.use(notFound);
+app.use(errorHandler);
 
 export default app;

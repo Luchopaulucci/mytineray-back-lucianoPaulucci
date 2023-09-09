@@ -1,5 +1,6 @@
 import express from 'express';
 import userController from '../controllers/user.controller.js';
+import { isAdmin } from '../middlewares/isAdmin.middleware.js';
 
 const router = express.Router();
 
@@ -16,6 +17,6 @@ router.post('/create', userController.createUser);
 router.put('/:id', userController.updateUser);
 
 /* DELETE user listing. */
-router.delete('/:id', userController.createUser);
+router.delete('/:id', userController.deleteUser);
 
 export default router;
