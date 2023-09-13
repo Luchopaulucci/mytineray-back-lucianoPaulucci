@@ -68,6 +68,7 @@ const controller = {
       return res.status(201).json({
         succes: true,
         message: "User created successfully",
+        response: newUser
       });
     } catch (error) {
       console.log(error);
