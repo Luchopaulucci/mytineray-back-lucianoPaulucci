@@ -1,32 +1,30 @@
 import Joi from "joi";
 import JoiPwd from 'joi-password-complexity'
 
-const passwordOptions = {
-    min: 4,
-    max: 26,
-    lowerCase: 1,
-    upperCase: 1,
-    numeric: 1,
-    symbol: 1,
-    requirementCount : 4,
-}
+const email = Joi.string()
+    .required()
+    .email({
+        minDomainSegments: 2
+    })
+const password =  Joi.string()
+    .required()
+    .min(6)
+    .max(35)
+    .alphanum();
 
 export const createUserSchema = Joi.object({
+    email,
+    password,
     name :Joi.string()
         .required()
         .max(45),
-    email : Joi.string()
-        .required()
-        .max(45)
-        .email({
-            minDomainSegments: 2
-        }),
-    password : JoiPwd(passwordOptions)
-        .required(),
     photo: Joi.string()
         .required()
         .uri(),
-    role: Joi.string()
-        .required()
-        .max(10),
+    country: Joi.string(),
+})
+
+export const userSignInschema = Joi.object({
+    email,
+    password,
 })
