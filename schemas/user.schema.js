@@ -1,11 +1,11 @@
 import Joi from "joi";
-import JoiPwd from 'joi-password-complexity'
 
 const email = Joi.string()
     .required()
     .email({
         minDomainSegments: 2
     })
+
 const password =  Joi.string()
     .required()
     .min(6)

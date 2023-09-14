@@ -12,13 +12,14 @@ const controller = {
 
       const user = await User.create(req.body);
 
-      return res.status(201).json({
+      return res.status(200).json({
         succes: true,
         message: "User registered",
       });
+
     } catch (error) {
       console.log(error);
-      res.status(500).json({
+      res.status(400).json({
         succes: false,
         message: "User is not registered",
       });
