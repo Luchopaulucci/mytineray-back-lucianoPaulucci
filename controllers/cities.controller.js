@@ -8,12 +8,8 @@ const controller = {
       queries.citie = new RegExp(`^${req.query.citie}`, "i");
     }
 
-    if (req.query.country) {
-      queries.country = req.query.country;
-    }
-
     try {
-      const cities = await Cities.find(queries).populate("created_By");
+      const cities = await Cities.find(queries).populate("itineraries").populate("created_By");
       if (cities.length > 0) {
         return res.status(200).json({
           succes: true,
@@ -37,7 +33,7 @@ const controller = {
 
   getCitiesById: async (req, res) => {
     try {
-      const oneCities = await Cities.findById(req.params.id);
+      const oneCities = await Cities.findById(req.params.id).populate("itineraries").populate("created_By");
 
       if (oneCities) {
         return res.status(200).json({
@@ -48,14 +44,14 @@ const controller = {
       }
 
       return res.status(404).json({
-        succes: true,
+        succes: false,
         message: "Citie search is not found",
       });
     } catch (error) {
       console.log(error);
       return res.status(500).json({
         succes: false,
-        message: "Citie creation failed",
+        message: "Citie get failed",
       });
     }
   },

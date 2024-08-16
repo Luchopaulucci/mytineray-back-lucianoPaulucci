@@ -1,5 +1,6 @@
 import express from 'express';
 import citiesController from '../controllers/cities.controller.js'
+import passport from '../middlewares/passport.js';
 
 const router = express.Router();
 
@@ -10,7 +11,7 @@ router.get('/get', citiesController.getCities);
 router.get('/:id', citiesController.getCitiesById);
 
 /* POST cities listing. */
-router.post('/create', citiesController.createCities);
+router.post('/create', passport.authenticate('jwt', {session: false}), citiesController.createCities);
 
 /* PUT cities listing. */
 router.put('/:id', citiesController.updateCities);
